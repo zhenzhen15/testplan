@@ -13,9 +13,13 @@ import com.testfan.dbutils.JDBCUtils;
 
 public class AddDataToDB {
 
-	public static final String URL = "jdbc:mysql://118.24.13.38:3308/goods?characterEncoding=utf8&useSSL=false";
-	public static final String USER = "zhangsan";
-	public static final String PASSWORD = "123123";
+//	public static final String URL = "jdbc:mysql://118.24.13.38:3308/goods?characterEncoding=utf8&useSSL=false";
+//	public static final String USER = "zhangsan";
+//	public static final String PASSWORD = "123123";
+	
+//	public static final String URL = "jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false";
+//	public static final String USER = "root";
+//	public static final String PASSWORD = "root";
 	
 	//static ComboPooledDataSource ds = new ComboPooledDataSource();
 
@@ -44,7 +48,7 @@ public class AddDataToDB {
 		System.out.println("add " + loginname + " " + loginpass);
 		Connection conn = getConn();
 		// sql
-		String sql = "INSERT INTO t_user_test2(uid, loginname, loginpass) values(?,?,?)";
+		String sql = "INSERT INTO t_user_test(uid, loginname, loginpass) values(?,?,?)";
 		// 预编译
 		try {
 			// 预编译SQL，减少sql执行
@@ -72,7 +76,7 @@ public class AddDataToDB {
 		 //获取连接
         Connection conn = getConn();
         //sql, 每行加空格
-        String sql = "delete from t_user_test2";
+        String sql = "delete from t_user_test";
         //预编译SQL，减少sql执行
         PreparedStatement ptmt;
 		try {
@@ -96,10 +100,11 @@ public class AddDataToDB {
 
 	public static void main(String[] args) {
 		delete();
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 1; i < 100; i++) {
 			AddDataToDB.add("test" + i, "pass" + i);
 		}
-
+		System.out.println("结束了");
+		
 	}
 
 }

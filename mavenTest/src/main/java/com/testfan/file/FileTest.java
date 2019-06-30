@@ -21,18 +21,27 @@ public class FileTest {
 		
 		fileUtilsTest();
 	}
-	
+	//FileUtiles一句话就可以读写文件，也不需要close，特别方便
 	private static void fileUtilsTest() throws IOException {
-		String str=FileUtils.readFileToString(new File("db1.csv"),"utf8");
-		System.out.println(str);
-		System.out.println(" 分割符 ---------------");
-		Charset charset =Charset.forName("utf8");
-		List<String> lines=FileUtils.readLines(new File("db1.csv"), charset);
+//		String str=FileUtils.readFileToString(new File("db1.csv"),"utf8");
+//		System.out.println(str);
+//		System.out.println(" 分割符 ---------------");
+//		Charset charset =Charset.forName("utf8");
+//		List<String> lines=FileUtils.readLines(new File("db3.csv"), charset);
+//		
+//		for (String string : lines) {
+//			System.out.println(string);
+//		}
+//		FileUtils.write(new File("db1.csv"), "12121212\n",charset,true);
 		
-		for (String string : lines) {
-			System.out.println(string);
-		}
-		FileUtils.write(new File("db1.csv"), "12121212\n",charset,true);
+		FileUtils.write(new File("db_test_user.csv"), "12121212\n","Utf8",true);
+		
+	List<String> lines=	FileUtils.readLines(new File("db_test_user.csv"),"utf8");
+	
+	for (String string : lines) {
+		System.out.println(string);
+		
+	}
 	}
 	
 	private static void fileTest() throws Exception {

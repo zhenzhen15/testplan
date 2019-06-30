@@ -30,6 +30,7 @@ public class DbUtilsTest {
 		
 		try {
 			add();
+//			update();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -39,12 +40,16 @@ public class DbUtilsTest {
 	private static void update() throws SQLException {
 		//ComboPooledDataSource ds = new ComboPooledDataSource();
 		// dbutis使用数据源
+//		QueryRunner runner = new QueryRunner(JDBCUtils.getDataSource());
+//		// 可变变量  无限 也可以没有 也可以数组
+//		Object[] objects= new Object[] {"123_test","333_test", "14ba4bd0-a0da-4a2c-b136-de036b54e98a"};
+//		//runner.update("update t_user_test set loginname=?,loginpass=? where uid=?", "123_dbutils","123_dbutils","14ba4bd0-a0da-4a2c-b136-de036b54e98a");
+//		runner.update(c);
+//		runner.update("delete from t_user_test");
+		
 		QueryRunner runner = new QueryRunner(JDBCUtils.getDataSource());
-		// 可变变量  无限 也可以没有 也可以数组
-		Object[] objects= new Object[] {"123_test","333_test", "14ba4bd0-a0da-4a2c-b136-de036b54e98a"};
-		//runner.update("update t_user_test set loginname=?,loginpass=? where uid=?", "123_dbutils","123_dbutils","14ba4bd0-a0da-4a2c-b136-de036b54e98a");
-		runner.update("update t_user_test set loginname=?,loginpass=? where uid=?", objects);
-		runner.update("delete from t_user_test");
+//		runner.update("update t_user_test2 set loginname=?,loginpass=? where uid=?", "123_dbutils","123_dbutils","849ee2b8-504a-4e28-98e9-d101d0ddbab3");
+		runner.update("update t_user_test2 set loginname=?,loginpass=? where uid=?", new Object[] {"1_dbutils","1_dbutils","849ee2b8-504a-4e28-98e9-d101d0ddbab3"});
 	}
 	
 	private static void add() throws SQLException {

@@ -23,18 +23,23 @@ public class DbutilsQueryTest {
 	private static void query() {
 		// dbutis使用数据源
  		QueryRunner runner = new QueryRunner(JDBCUtils.getDataSource());
-		String sql = "select * from t_user_test";
+		String sql = "select * from t_user_test2";
 		try {
-			// 有对象反射
+//			 有对象反射1
 			List<DbUser> list = (List<DbUser>) runner.query(sql, new BeanListHandler(DbUser.class));
 			System.out.println(list);
 			for (DbUser dbUser : list) {
 				System.out.print(dbUser.getLoginname()+" ");
 				System.out.print(dbUser.getLoginpass());
-				System.out.println();
+				System.out.println("000");
 			}
+//			 有对象反射2
 			DbUser dbUser =  (DbUser) runner.query("select * from t_user_test where uid=?", new BeanHandler(DbUser.class),"21e25344-e8df-4346-8196-bfab7ab26958");
 			System.out.println(dbUser);
+		
+			
+			
+			
 			//没有对象
 			Map<String, Object> mapobject =runner.query("select * from t_user_test where uid=?",new MapHandler(),"21e25344-e8df-4346-8196-bfab7ab26958");
 			System.out.println(mapobject);

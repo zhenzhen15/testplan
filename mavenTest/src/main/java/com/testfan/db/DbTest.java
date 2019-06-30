@@ -1,5 +1,6 @@
 package com.testfan.db;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
@@ -10,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+
 import com.github.crab2died.ExcelUtils;
 
 public class DbTest {
@@ -17,8 +20,13 @@ public class DbTest {
 	public static void main(String[] args) throws Exception {
 		List<DbUser> list = getAllDbUserTest();
 		System.out.println(list.size());
-		dbtoFilebystream(list);
-		//dbtoFilebywriter(list);
+//		dbtoFilebystream(list);
+//		dbtoFilebywriter(list);
+		
+//		for (DbUser dbUser : list) {
+//			FileUtils.write(new File("db_test_user.csv"),dbUser.toString(),"Utf8",true);
+//			
+//		}
 		dbtoExcel(list, DbUser.class);
 		System.out.println(" 结束了 ");
 	}
